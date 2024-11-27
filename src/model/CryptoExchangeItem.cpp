@@ -28,6 +28,10 @@ CryptoExchangeItem::CryptoExchangeItem()
     m_NameIsSet = false;
     m_Year_established = 0;
     m_Year_establishedIsSet = false;
+    m_Country = utility::conversions::to_string_t("");
+    m_CountryIsSet = false;
+    m_Website = utility::conversions::to_string_t("");
+    m_WebsiteIsSet = false;
 }
 
 CryptoExchangeItem::~CryptoExchangeItem()
@@ -55,6 +59,14 @@ web::json::value CryptoExchangeItem::toJson() const
     if(m_Year_establishedIsSet)
     {
         val[utility::conversions::to_string_t(U("year_established"))] = ModelBase::toJson(m_Year_established);
+    }
+    if(m_CountryIsSet)
+    {
+        val[utility::conversions::to_string_t(U("country"))] = ModelBase::toJson(m_Country);
+    }
+    if(m_WebsiteIsSet)
+    {
+        val[utility::conversions::to_string_t(U("website"))] = ModelBase::toJson(m_Website);
     }
 
     return val;
@@ -94,6 +106,26 @@ bool CryptoExchangeItem::fromJson(const web::json::value& val)
             setYearEstablished(refVal_setYearEstablished);
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(U("country"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("country")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setCountry;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCountry);
+            setCountry(refVal_setCountry);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("website"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("website")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setWebsite;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setWebsite);
+            setWebsite(refVal_setWebsite);
+        }
+    }
     return ok;
 }
 
@@ -115,6 +147,14 @@ void CryptoExchangeItem::toMultipart(std::shared_ptr<MultipartFormData> multipar
     if(m_Year_establishedIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("year_established")), m_Year_established));
+    }
+    if(m_CountryIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("country")), m_Country));
+    }
+    if(m_WebsiteIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("website")), m_Website));
     }
 }
 
@@ -144,6 +184,18 @@ bool CryptoExchangeItem::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         int32_t refVal_setYearEstablished;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("year_established"))), refVal_setYearEstablished );
         setYearEstablished(refVal_setYearEstablished);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("country"))))
+    {
+        utility::string_t refVal_setCountry;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("country"))), refVal_setCountry );
+        setCountry(refVal_setCountry);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("website"))))
+    {
+        utility::string_t refVal_setWebsite;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("website"))), refVal_setWebsite );
+        setWebsite(refVal_setWebsite);
     }
     return ok;
 }
@@ -207,6 +259,46 @@ bool CryptoExchangeItem::yearEstablishedIsSet() const
 void CryptoExchangeItem::unsetYear_established()
 {
     m_Year_establishedIsSet = false;
+}
+utility::string_t CryptoExchangeItem::getCountry() const
+{
+    return m_Country;
+}
+
+void CryptoExchangeItem::setCountry(const utility::string_t& value)
+{
+    m_Country = value;
+    m_CountryIsSet = true;
+}
+
+bool CryptoExchangeItem::countryIsSet() const
+{
+    return m_CountryIsSet;
+}
+
+void CryptoExchangeItem::unsetCountry()
+{
+    m_CountryIsSet = false;
+}
+utility::string_t CryptoExchangeItem::getWebsite() const
+{
+    return m_Website;
+}
+
+void CryptoExchangeItem::setWebsite(const utility::string_t& value)
+{
+    m_Website = value;
+    m_WebsiteIsSet = true;
+}
+
+bool CryptoExchangeItem::websiteIsSet() const
+{
+    return m_WebsiteIsSet;
+}
+
+void CryptoExchangeItem::unsetWebsite()
+{
+    m_WebsiteIsSet = false;
 }
 }
 }

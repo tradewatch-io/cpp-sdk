@@ -81,6 +81,24 @@ public:
 
     void setYearEstablished(int32_t value);
 
+    /// <summary>
+    /// Exchange country
+    /// </summary>
+    utility::string_t getCountry() const;
+    bool countryIsSet() const;
+    void unsetCountry();
+
+    void setCountry(const utility::string_t& value);
+
+    /// <summary>
+    /// Exchange website URL
+    /// </summary>
+    utility::string_t getWebsite() const;
+    bool websiteIsSet() const;
+    void unsetWebsite();
+
+    void setWebsite(const utility::string_t& value);
+
 
 protected:
     utility::string_t m_Id;
@@ -89,6 +107,10 @@ protected:
     bool m_NameIsSet;
     int32_t m_Year_established;
     bool m_Year_establishedIsSet;
+    utility::string_t m_Country;
+    bool m_CountryIsSet;
+    utility::string_t m_Website;
+    bool m_WebsiteIsSet;
 };
 
 

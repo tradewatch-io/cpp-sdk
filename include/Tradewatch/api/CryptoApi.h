@@ -66,7 +66,7 @@ public:
     /// <remarks>
     /// Get list of available cryptocurrency exchanges
     /// </remarks>
-    pplx::task<std::shared_ptr<CryptoExchangesList>> cryptoGetExchanges(
+    pplx::task<std::shared_ptr<CryptoExchangesList>> getExchanges(
     ) const;
     /// <summary>
     /// Last Quote
