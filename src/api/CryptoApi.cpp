@@ -175,7 +175,7 @@ pplx::task<std::shared_ptr<CryptoConversion>> CryptoApi::convert(utility::string
         return localVarResult;
     });
 }
-pplx::task<std::shared_ptr<CryptoExchangesList>> CryptoApi::cryptoGetExchanges() const
+pplx::task<std::shared_ptr<CryptoExchangesList>> CryptoApi::getExchanges() const
 {
 
 
@@ -209,7 +209,7 @@ pplx::task<std::shared_ptr<CryptoExchangesList>> CryptoApi::cryptoGetExchanges()
     }
     else
     {
-        throw ApiException(400, utility::conversions::to_string_t("CryptoApi->cryptoGetExchanges does not produce any supported media type"));
+        throw ApiException(400, utility::conversions::to_string_t("CryptoApi->getExchanges does not produce any supported media type"));
     }
 
     localVarHeaderParams[utility::conversions::to_string_t("Accept")] = localVarResponseHttpContentType;
@@ -236,7 +236,7 @@ pplx::task<std::shared_ptr<CryptoExchangesList>> CryptoApi::cryptoGetExchanges()
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("CryptoApi->cryptoGetExchanges does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("CryptoApi->getExchanges does not consume any supported media type"));
     }
 
     // authentication (api_key_query) required
@@ -272,7 +272,7 @@ pplx::task<std::shared_ptr<CryptoExchangesList>> CryptoApi::cryptoGetExchanges()
         if (localVarResponse.status_code() >= 400)
         {
             throw ApiException(localVarResponse.status_code()
-                , utility::conversions::to_string_t("error calling cryptoGetExchanges: ") + localVarResponse.reason_phrase()
+                , utility::conversions::to_string_t("error calling getExchanges: ") + localVarResponse.reason_phrase()
                 , std::make_shared<std::stringstream>(localVarResponse.extract_utf8string(true).get()));
         }
 
@@ -283,7 +283,7 @@ pplx::task<std::shared_ptr<CryptoExchangesList>> CryptoApi::cryptoGetExchanges()
             if( localVarContentType.find(localVarResponseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling cryptoGetExchanges: unexpected response type: ") + localVarContentType
+                    , utility::conversions::to_string_t("error calling getExchanges: unexpected response type: ") + localVarContentType
                     , std::make_shared<std::stringstream>(localVarResponse.extract_utf8string(true).get()));
             }
         }
@@ -307,7 +307,7 @@ pplx::task<std::shared_ptr<CryptoExchangesList>> CryptoApi::cryptoGetExchanges()
         else
         {
             throw ApiException(500
-                , utility::conversions::to_string_t("error calling cryptoGetExchanges: unsupported response type"));
+                , utility::conversions::to_string_t("error calling getExchanges: unsupported response type"));
         }
 
         return localVarResult;
