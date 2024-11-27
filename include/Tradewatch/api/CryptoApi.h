@@ -23,6 +23,7 @@
 #include "Tradewatch/ApiClient.h"
 
 #include "Tradewatch/model/CryptoConversion.h"
+#include "Tradewatch/model/CryptoExchangesList.h"
 #include "Tradewatch/model/CursorPage__T_Customized_SymbolsOutFull_.h"
 #include "Tradewatch/model/HTTPValidationError.h"
 #include "Tradewatch/model/LastQuote.h"
@@ -58,6 +59,14 @@ public:
     pplx::task<std::shared_ptr<CryptoConversion>> convert(
         utility::string_t from,
         utility::string_t to
+    ) const;
+    /// <summary>
+    /// Available Exchanges
+    /// </summary>
+    /// <remarks>
+    /// Get list of available cryptocurrency exchanges
+    /// </remarks>
+    pplx::task<std::shared_ptr<CryptoExchangesList>> cryptoGetExchanges(
     ) const;
     /// <summary>
     /// Last Quote
